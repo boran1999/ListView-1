@@ -49,41 +49,35 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
         catch (IOException ex) {}
-
-        adapter = new UserListAdapter(this, users);
-
-        listView.setAdapter(adapter);
-    }
-    public void onClick1(View view)
-    {
-        Collections.sort(users, new Comparator<User>() {
-            public int compare(User o1, User o2) {
-                return o1.name.toString().compareTo(o2.name.toString());
-            }
-        });
         adapter = new UserListAdapter(this, users);
         listView.setAdapter(adapter);
     }
-    public void onClick2(View view)
+    public void onClick(View view)
     {
-        Collections.sort(users, new Comparator<User>() {
-            public int compare(User o1, User o2) {
-                return o1.phoneNumber.toString().compareTo(o2.phoneNumber.toString());
-            }
-        });
-        adapter = new UserListAdapter(this, users);
-        listView.setAdapter(adapter);
-    }
-    public void onClick3(View view)
-    {
-        Collections.sort(users, new Comparator<User>() {
-            public int compare(User o1, User o2) {
-                return o1.sex.toString().compareTo(o2.sex.toString());
-            }
-        });
-        adapter = new UserListAdapter(this, users);
-        listView.setAdapter(adapter);
+        if (view.getId() == R.id.b1) {
+            Collections.sort(users, new Comparator<User>() {
+                public int compare(User o1, User o2) {
+                    return o1.name.toString().compareTo(o2.name.toString());
+                }
+            });
+            adapter.notifyDataSetChanged();
+        }
+        if (view.getId() == R.id.b2) {
+            Collections.sort(users, new Comparator<User>() {
+                public int compare(User o1, User o2) {
+                    return o1.phoneNumber.toString().compareTo(o2.phoneNumber.toString());
+                }
+            });
+            adapter.notifyDataSetChanged();
+        }
+        if (view.getId() == R.id.b3) {
+            Collections.sort(users, new Comparator<User>() {
+                public int compare(User o1, User o2) {
+                    return o1.sex.toString().compareTo(o2.sex.toString());
+                }
+            });
+            adapter.notifyDataSetChanged();
+        }
     }
 }
